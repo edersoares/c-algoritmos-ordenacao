@@ -27,21 +27,25 @@ int * insertionSort(int n, int v[]) {
         // j será o último elemento do vetor ordenado
         j = c - 1;
 
+        // a será o valor do elemento a ser ordenado
+        a = v[i];
+
         // Enquanto não chegar ao início do vetor ordenado e o valor do elemento
         // da direita (elemento do vetor desordenado) for menor que o da valor
-        // do elemento da esquerda (elemento do vetor ordenado) irá efetuar a
-        // troca das posições no vetor
-        while (j >= 0 && v[i] < v[j]) {
+        // do elemento da esquerda (elemento do vetor ordenado) irá empurrar o
+        // elemento do vetor ordenado para uma posição mais a direita
+        while (j >= 0 && a < v[j]) {
 
-            // Faz a troca de posição
-            a = v[j];
-            v[j] = v[i];
-            v[i] = a;
+            // Empurra o elemento do vetor ordenado
+            v[i] = v[j];
 
             // Percore o vetor ordenado de traz pra frente
             i--;
             j--;
         }
+
+        // Inseri o elemento do vetor desordenado no vetor ordenado
+        v[i] = a;
     }
 
     return (int *) v;
